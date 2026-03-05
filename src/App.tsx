@@ -4,9 +4,11 @@ import './App.css'
 import DeepEnvironment from './components/DeepEnvironment'
 import GlassPanel from './components/GlassPanel'
 
-// 懒加载 SchemaL 和 SchemaR 组件
+// 懒加载 SchemaL、SchemaR、SchemaI 和 SchemaReal 组件
 const SchemaL = lazy(() => import('./components/SchemaL'))
 const SchemaR = lazy(() => import('./components/SchemaR'))
+const SchemaI = lazy(() => import('./components/SchemaI'))
+const SchemaReal = lazy(() => import('./components/SchemaReal'))
 
 interface PanelData {
   id: string
@@ -216,6 +218,26 @@ function App() {
                       }>
                         <SchemaR isExpanded={false} />
                       </Suspense>
+                    ) : panel.id === 'panel-3' ? (
+                      <Suspense fallback={
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-xl font-light tracking-widest text-white/40">
+                            {panel.title}
+                          </span>
+                        </div>
+                      }>
+                        <SchemaI isExpanded={false} />
+                      </Suspense>
+                    ) : panel.id === 'panel-4' ? (
+                      <Suspense fallback={
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-xl font-light tracking-widest text-white/40">
+                            {panel.title}
+                          </span>
+                        </div>
+                      }>
+                        <SchemaReal isExpanded={false} />
+                      </Suspense>
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
                         <span className="text-xl font-light tracking-widest text-white/40">
@@ -260,6 +282,26 @@ function App() {
                             </div>
                           }>
                             <SchemaR isExpanded={false} />
+                          </Suspense>
+                        ) : panel.id === 'panel-3' ? (
+                          <Suspense fallback={
+                            <div className="w-full h-full flex items-center justify-center">
+                              <span className="text-xl font-light tracking-widest text-white/40">
+                                {panel.title}
+                              </span>
+                            </div>
+                          }>
+                            <SchemaI isExpanded={false} />
+                          </Suspense>
+                        ) : panel.id === 'panel-4' ? (
+                          <Suspense fallback={
+                            <div className="w-full h-full flex items-center justify-center">
+                              <span className="text-xl font-light tracking-widest text-white/40">
+                                {panel.title}
+                              </span>
+                            </div>
+                          }>
+                            <SchemaReal isExpanded={false} />
                           </Suspense>
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
@@ -337,6 +379,26 @@ function App() {
                       </div>
                     }>
                       <SchemaR isExpanded={true} />
+                    </Suspense>
+                  ) : selectedPanel.id === 'panel-3' ? (
+                    <Suspense fallback={
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="text-3xl font-light tracking-widest text-white/40">
+                          {selectedPanel.title}
+                        </span>
+                      </div>
+                    }>
+                      <SchemaI isExpanded={true} />
+                    </Suspense>
+                  ) : selectedPanel.id === 'panel-4' ? (
+                    <Suspense fallback={
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="text-3xl font-light tracking-widest text-white/40">
+                          {selectedPanel.title}
+                        </span>
+                      </div>
+                    }>
+                      <SchemaReal isExpanded={true} />
                     </Suspense>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
