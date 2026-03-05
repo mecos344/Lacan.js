@@ -116,7 +116,7 @@ function App() {
 
       {/* Global Header - 使用 gap 控制间距，带呼吸光效 */}
       <motion.div
-        className={`absolute top-20 left-0 right-0 flex flex-col items-center gap-4 pointer-events-none ${selectedId ? 'z-0' : 'z-10'}`}
+        className={`relative top-20 left-0 right-0 flex flex-col items-center gap-4 pointer-events-none ${selectedId ? 'z-0' : 'z-10'}`}
         animate={selectedId ? { opacity: 0 } : { opacity: 1 }}
         transition={{ duration: 0.4 }}
       >
@@ -165,8 +165,8 @@ function App() {
       </motion.div>
 
       {/* Tiled Gallery Layout */}
-      <div className="absolute inset-0 flex items-center justify-center p-8">
-        <div className="flex flex-row flex-wrap justify-center items-center gap-12 pt-24">
+      <div className="relative flex items-center justify-center p-8 pt-40 pb-20">
+        <div className="flex flex-row flex-wrap justify-center items-center gap-12">
           {panels.map((panel, index) => {
             // 随机进场顺序
             const delay = 3.3 + randomOrder.indexOf(index) * 0.15
@@ -326,7 +326,7 @@ function App() {
           <>
             {/* Backdrop mask */}
             <motion.div
-              className="absolute inset-0 z-40"
+              className="fixed inset-0 z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -338,10 +338,10 @@ function App() {
 
             {/* Expanded Panel - moves to left when nodes selected */}
             <div
-              className="absolute inset-0 z-50 pointer-events-none"
+              className="fixed inset-0 z-50 pointer-events-none"
             >
               <div
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-600"
+                className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-600"
                 style={{
                   transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
                   left: selectedNodes ? '30%' : '50%',
@@ -415,7 +415,7 @@ function App() {
             <AnimatePresence>
               {selectedNodes && (
                 <motion.div
-                  className="absolute inset-0 z-50 flex items-center justify-end pointer-events-none"
+                  className="fixed inset-0 z-50 flex items-center justify-end pointer-events-none"
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 100 }}
